@@ -28,7 +28,7 @@ loan2_payment3 = Payment.create(loan: loan2, date: Date.current.to_date.prev_mon
 loan2_payment4 = Payment.create(loan: loan2, date: Date.current.to_date.prev_month(2), amount_paid: 108)
 loan2_payment5 = Payment.create(loan: loan2, date: Date.current.to_date.prev_month(1), amount_paid: 108)
 
-loan3_payment1 = Payment.create(loan: loan3, date: Date.current.to_date.prev_month(8), amount_paid: 1500)
+loan3_payment1 = Payment.create(loan: loan3, date: Date.current.to_date, amount_paid: 150)
 
 loan4_payment1 = Payment.create(loan: loan4, date: Date.current.to_date.prev_month(6), amount_paid: 108)
 
