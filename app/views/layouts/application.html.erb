@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LenderPortfolio</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container">
+      <ul class="nav nav-tabs">
+        <li role="presentation"><%= link_to 'Portfolio', root_path %></li>
+        <li role="presentation"><%= link_to 'Automatic Payments', automatic_payments_path %></li>
+      </ul>
+
+    <div class="jumbotron">
+      <h1>Hello, <%= @user.name %>!</h1>
+      <p>This is your loan portfolio</p>
+    </div>      
+      <%= yield %>
+    </div>
+  </body>
+</html>

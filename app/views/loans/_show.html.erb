@@ -1,0 +1,49 @@
+<div class="loan-content">
+  <div class= "col-xs-6 col-md-4">
+    <h2>Payment Schedule</h2>
+    <div>
+    <span class="label label-success">Paid On-Time</span>
+    <span class="label label-warning">Paid Late</span>
+    <span class="label label-danger">Unpaid and Late</span>
+    </div><br>
+      <table class="table table-condensed">
+        <tr>
+          <th>#</th>
+          <th>Due on:</th>
+          <th>Amount Due:</th>
+          <th>Amount Paid:</th>
+        </tr>
+        <% @schedule.each do |entry| %>
+          <% if entry[:late] && entry[:paid]%>
+            <tr class="warning">
+          <% elsif entry[:late] %>
+            <tr class="danger">
+          <% elsif entry[:paid]%>
+            <tr class="success">
+          <% else %>  
+          <tr>
+            <% end %>
+            <td><%= entry[:payment_period] %></td>
+            <td><%= entry[:due_date] %></td>
+            <td><%= entry[:amount_due] %></td>
+            <td><%= entry[:amount_paid] %></td>
+          </tr>
+        <% end %>
+      </table>  
+  </div>
+
+  <div class= "col-xs-6 col-md-4">
+    <h2>Late Payments</h2>
+    <table class="table table-condensed">
+        <tr>
+          <th>&#60 10 days</th>
+          <th>10-20 days</th>
+          <th>20+</th>
+        </tr>
+        <tr>
+          <td><%= @late_payments[:less_than_ten_days_late] %></td>
+          <td><%= @late_payments[:up_to_twenty_days_late] %></td>
+          <td><%= @late_payments[:more_than_twenty_days_late] %></td>
+        </tr>
+    </table>
+    </div>

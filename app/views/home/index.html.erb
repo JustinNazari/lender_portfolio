@@ -1,0 +1,17 @@
+<div class="row">
+  <div class= "col-xs-12 col-md-4">
+    <h2>Loans</h2>
+      <table class="table table-condensed">
+        <% @user.loans.each do |loan| %>
+          <tr>
+            <td><%= link_to loan.campaign.description, user_loan_path(loan.investor, loan), remote: true %>: <%= loan.amount %></td>
+          </tr>
+        <% end %>
+      </table>
+  </div>
+
+  <div class="loan-window">
+  </div>
+  
+  </div>
+</div>
