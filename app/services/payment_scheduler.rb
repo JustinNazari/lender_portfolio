@@ -73,7 +73,7 @@ class PaymentScheduler
     more_than_twenty_days_late = []
     
 
-    schedule.each do |entry| 
+    schedule.each do |entry|
       if entry[:late] && entry[:paid]
         if (entry[:due_date] + 10) > entry[:payments].last.date
           less_than_ten_days_late.push(entry)
