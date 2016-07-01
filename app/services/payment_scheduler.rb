@@ -26,14 +26,14 @@ class PaymentScheduler
       entry_payments_sum = 0
       
       entry_payments = payments.select do |payment|
-          payment.date.to_date < due_date
+          payment.date.to_date < due_date && payment.date.to_date > due_date - 1
       end
 
       entry_payments.each do |payment|
         entry_payments_sum += payment.amount_paid
       end
 
-      if entry_payments_sum < amount_due && due_date < Date.current
+      if entry_payments_sum < (amount_due + payment_diff) && due_date < Date.current
         entry[:late] = true
       end
 
@@ -41,10 +41,10 @@ class PaymentScheduler
 
       payments.each do |payment|
         if ((remaining + payment_diff) - payment.amount_paid) > 0
-          remainaing = remaining - payment.amount_paid
+          remaining = remaining - payment.amount_paid
           entry[:payments].push(payments.shift)
         else
-          payment.amount_paid -= remaining
+          entry[:payments].push(payment)
           break
         end
       end
